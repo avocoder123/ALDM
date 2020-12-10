@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body{
+            background: url("https://images.wallpaperscraft.com/image/colored_pencils_set_sharpened_117093_2560x1080.jpg");
+            background-repeat: no-repeat;
+            background-size: inherit;
+        }
+        table {
+            margin: 17px auto;
+            border-collapse: collapse;
+            border: 1px solid #000000;
+        }
+
+        td {
+            color: #000000;
+        }
+        th, td {
+            color: #000000;
+            border: 1px solid #000000;
+            padding: 7px 15px;
+            border-collapse: collapse;
+        }
+        th {
+            background: #0CD7E8;
+            color: #000000;
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .btn {
+            padding: .5em 2em;
+            color: #030202;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .input1 {
+            display: block;
+            width: 80%;
+            margin: auto auto 2em;
+            border: none;
+            border-bottom: 1px solid #eaeaea;
+            padding: .5em 0 1.25em;
+        }
+        .log-form {
+            width: 40%;
+            min-width: 320px;
+            max-width: 475px;
+            background: #ffffff;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, .25);
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #0075A2;
+            color: white;
+        }
+        .div1{
+            padding-bottom: 4rem;
+        }
+        .page1 {
+            position: relative;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body>
+<div class="page1">
+    <div class="div1">
+<center>
+    <div class="log-form">
+        <h2>Login Here</h2>
+        <form action="/login" method="post">
+            <input class = "input1" type="text" id="name" name="name" placeholder="Username">
+            <input class = "input1" type="text" id="pass" name="pass" placeholder="Password">
+            <button type="submit" class="btn">Login</button>
+        </form>
+    </div>
+</center>
+    </div>
+<center>
+    <footer>
+        <p>AMDL schedule builder <br>
+            Need assistance?<br>
+            contact (717)117-7711 or <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">click here</a></p>
+    </footer>
+</center>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Schedule Classes : List of Classe</title>
+    <style>
+        body{
+            background: url("https://visme.co/blog/wp-content/uploads/2017/07/50-Beautiful-and-Minimalist-Presentation-Backgrounds-031.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .navbar {
+            font-weight: bold;
+            background-color: #0075A2;
+            overflow: hidden;
+        }
+        .navbar a{
+            float: left;
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            display: block;
+            padding: 10px;
+        }
+        .navbar a:hover {
+            background-color: #9b673b;
+            background-color: cornflowerblue;
+
+        }
+        .buttonb {
+            background:    #6B2737;
+            border:        2px solid #556699;
+            border-radius: 35px;
+            box-shadow:    0 1px #444444;
+            padding:       4px 12px;
+            color:         #ffffff;
+            display:       inline-block;
+            font:          normal bold 15px/1 "Open Sans", sans-serif;
+            text-align:    center;
+        }
+        .buttonb:hover {
+            background-color: red;
+            color: white;
+        }
+        table {
+            font-family: 'Arial';
+            margin: 17px auto;
+            border-collapse: collapse;
+            border: 1px solid #000000;
+        }
+
+        td {
+            color: #000000;
+        }
+        th, td {
+            color: #000000;
+            border: 1px solid #000000;
+            padding: 7px 15px;
+            border-collapse: collapse;
+        }
+        th {
+            background: #ADF5FF;
+            color: #000000;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .btn {
+            box-shadow: 5px 5px 5px #999;
+            padding: .5em 2em;
+            color: #030202;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+        .input1 {
+            box-shadow: 5px 5px 5px #999;
+            display: block;
+            width: 20%;
+            margin: auto auto 2em;
+            border: none;
+            border-bottom: 1px solid #eaeaea;
+            padding: .5em 0 1.25em;
+        }
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #0075A2;
+            color: white;
+        }
+        .div1{
+            padding-bottom: 4rem;
+        }
+        .page1 {
+            position: relative;
+            min-height: 94vh;
+        }
+        table.blueTable {
+            box-shadow: 10px 10px 10px #999;
+            border: 1px solid #1C6EA4;
+            background-color: #EEEEEE;
+            width: 100%;
+            text-align: center;
+            border-collapse: collapse;
+            table-layout: fixed
+        }
+        table.blueTable td, table.blueTable th {
+            border: 1px solid #AAAAAA;
+            padding: 3px 2px;
+        }
+        table.blueTable tbody td {
+            font-size: 18px;
+        }
+        table.blueTable tr:nth-child(even) {
+            background: #F5F5F5;
+        }
+        table.blueTable thead {
+            background: #B185C9;
+            background: -moz-linear-gradient(top, #c4a3d6 0%, #b891ce 66%, #B185C9 100%);
+            background: -webkit-linear-gradient(top, #c4a3d6 0%, #b891ce 66%, #B185C9 100%);
+            background: linear-gradient(to bottom, #c4a3d6 0%, #b891ce 66%, #B185C9 100%);
+            border-bottom: 1px solid #030004;
+        }
+        table.blueTable thead th {
+            font-size: 22px;
+            font-weight: bold;
+            color: black;
+            text-align: center;
+            border-left: 1px solid #070101;
+        }
+        table.blueTable thead th:first-child {
+            border-left: none;
+        }
+
+        table.blueTable tfoot td {
+            font-size: 14px;
+        }
+        table.blueTable tfoot .links {
+            text-align: right;
+        }
+        table.blueTable tfoot .links a{
+            display: inline-block;
+            background: #1C6EA4;
+            color: #FFFFFF;
+            padding: 2px 8px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="navbar">
+    <a href="/admin">Courses</a>
+    <a href="/addClass">Add Class</a>
+    <a href="/">Logout</a>
+</div >
+
+    <div class="page1">
+        <div class="div1">
+            <center>
+    <table class="blueTable">
+        <thead>
+            <tr>
+                <th th:text="'Course: '+${theclass.getClass_ID()}+' '+${theclass.getCourse_ID().getCourse_title()}"></th>
+                <th th:text="'Professor: '+${theclass.getProfessor()}"></th>
+                <th th:text="'Capacity: '+${theclass.getCapacity()}"></th>
+                <th th:text="'Filled: '+${theclass.getSlots_Taken()}"></th>
+            </tr>
+        </thead>
+    </table>
+    <br>
+    <!-- if -->
+    <h4 th:if="${userlist.size() eq 0}">No student information to be displayed. </h4>
+
+    <!-- else -->
+    <table class="blueTable" th:unless="${userlist.size() eq 0 }">
+        <thead>
+        <tr>
+            <th scope="col">Student ID</th>
+            <th scope="col">Student First Name</th>
+            <th scope="col">Student Last Name</th>
+            <th scope="col">Major</th>
+            <th scope="col">Credits</th>
+            <th scope="col">GPA</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr th:each="viewClass : ${userlist}">
+            <td th:text="${viewClass.getUser_ID()}"></td>
+            <td th:text="${viewClass.getFirst_name()}"></td>
+            <td th:text="${viewClass.getLast_name()}"></td>
+            <td th:text="${viewClass.getMajor()}"></td>
+            <td th:text="${viewClass.getCredits()}"></td>
+            <td th:text="${viewClass.getGPA()}"></td>
+            <td>
+                <a th:href="@{'/viewClass/d/' + ${theclass.getClass_ID()} + '/'+ ${viewClass.getUser_ID()} }" class="buttonb">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <form method="post" action="/viewClass/a">
+        <input type="hidden" th:name="theclass" th:value="${theclass.getClass_ID()}">
+        <input type="text" class="input1" id="SID" name="SID" placeholder="Add Student">
+        <button type="submit" class="btn">Submit</button>
+    </form>
+</section>
+</center>
+</div>
+<center>
+    <footer>
+        <p>AMDL schedule builder <br>
+            Need assistance?<br>
+            contact (717)117-7711 or <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">click here</a></p>
+    </footer>
+</center>
+</div>
+</body>
+
+</html>
